@@ -1,9 +1,9 @@
 # Tailored Research
-The GPT Researcher package allows you to tailor the research to your needs such as researching on specific sources or local documents, and even specify the agent prompt instruction upon which the research is conducted.
+The Vurvey Researcher package allows you to tailor the research to your needs such as researching on specific sources or local documents, and even specify the agent prompt instruction upon which the research is conducted.
 
 ### Research on Specific Sources 📚
 
-You can specify the sources you want the GPT Researcher to research on by providing a list of URLs. The GPT Researcher will then conduct research on the provided sources.
+You can specify the sources you want the Vurvey Researcher to research on by providing a list of URLs. The Vurvey Researcher will then conduct research on the provided sources.
 
 ```python
 from gpt_researcher import GPTResearcher
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 ```
 
 ### Research on Local Documents 📄
-You can instruct the GPT Researcher to research on local documents by providing the path to those documents. Currently supported file formats are: PDF, plain text, CSV, Excel, Markdown, PowerPoint, and Word documents.
+You can instruct the Vurvey Researcher to research on local documents by providing the path to those documents. Currently supported file formats are: PDF, plain text, CSV, Excel, Markdown, PowerPoint, and Word documents.
 
 *Step 1*: Add the env variable `DOC_PATH` pointing to the folder where your documents are located.
 
@@ -60,7 +60,7 @@ export DOC_PATH="./my-docs"
 
 *Step 2*: When you create an instance of the `GPTResearcher` class, pass the `report_source` argument as `"local"`.
 
-GPT Researcher will then conduct research on the provided documents.
+Vurvey Researcher will then conduct research on the provided documents.
 
 ```python
 from gpt_researcher import GPTResearcher
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 ```
 
 ### Hybrid Research 🔄
-You can combine the above methods to conduct hybrid research. For example, you can instruct the GPT Researcher to research on both web sources and local documents.
+You can combine the above methods to conduct hybrid research. For example, you can instruct the Vurvey Researcher to research on both web sources and local documents.
 Simply provide the sources and set the `report_source` argument as `"hybrid"` and watch the magic happen.
 
 Please note! You should set the proper retrievers for the web sources and doc path for local documents for this to work.
@@ -90,7 +90,7 @@ To lean more about retrievers check out the [Retrievers](https://docs.gptr.dev/d
 
 
 ### Research on LangChain Documents 🦜️🔗
-You can instruct the GPT Researcher to research on a list of langchain document instances.
+You can instruct the Vurvey Researcher to research on a list of langchain document instances.
 
 For example:
 

@@ -1,5 +1,5 @@
 # Vector Stores
-The GPT Researcher package allows you to integrate with existing langchain vector stores that have been populated.
+The Vurvey Researcher package allows you to integrate with existing langchain vector stores that have been populated.
 For a complete list of supported langchain vector stores, please refer to this [link](https://python.langchain.com/v0.2/docs/integrations/vectorstores/).
 
 You can create a set of embeddings and langchain documents and store them in any supported vector store of your choosing.

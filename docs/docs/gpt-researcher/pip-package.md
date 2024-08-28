@@ -4,7 +4,7 @@
 
 🌟 **Exciting News!** Now, you can integrate `gpt-researcher` with your apps seamlessly!
 
-## Steps to Install GPT Researcher
+## Steps to Install Vurvey Researcher
 
 Follow these easy steps to get started:
 
@@ -25,7 +25,7 @@ export OPENAI_API_KEY={Your OpenAI API Key here}
 export TAVILY_API_KEY={Your Tavily API Key here}
 ```
 
-3. **Start using GPT Researcher in your own codebase**
+3. **Start using Vurvey Researcher in your own codebase**
 
 ## Example Usage 📝
 
