@@ -71,4 +71,3 @@ For the custom retriever to work correctly, the response from the endpoint shoul
 
 The system assumes this response format and processes the list of sources accordingly.
 
-Missing a retriever? Feel free to contribute to this project by submitting issues or pull requests on our [GitHub](https://github.com/assafelovic/gpt-researcher) page.
