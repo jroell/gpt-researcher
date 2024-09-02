@@ -10,11 +10,8 @@ const Footer = ({ setChatBoxSettings, chatBoxSettings}) => {
         <Modal setChatBoxSettings={setChatBoxSettings} chatBoxSettings={chatBoxSettings} />
         <div className="text-sm text-gray-500">
             © {new Date().getFullYear()} Vurvey Researcher. All rights reserved.
-<<<<<<< HEAD
         </div>
         <div className="flex items-center gap-3">
-=======
->>>>>>> 6a8cb3c (fixes for running on server)
         </div>
       </div>
     </>
