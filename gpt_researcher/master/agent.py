@@ -157,7 +157,7 @@ class GPTResearcher:
             await stream_output(
                 "logs",
                 "research_step_finalized",
-                f"Finalized research step.\n💸 Total Research Costs: ${self.get_costs()}",
+                f"Finalized research step.\n💸 ",
                 self.websocket,
             )
 

@@ -67,7 +67,7 @@ async def read_root(request: Request):
 def sanitize_filename(filename):
     return re.sub(r"[^\w\s-]", "", filename).strip()
 
-@app.websocket("/ws")
+@app.websocket("/api/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     try:
