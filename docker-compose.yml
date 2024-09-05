@@ -8,6 +8,8 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       TAVILY_API_KEY: ${TAVILY_API_KEY}
       LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY}
+    volumes:
+      - ./outputs:/usr/src/app/outputs:rw
     restart: always
     ports:
       - 8000:8000
