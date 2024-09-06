@@ -6,7 +6,10 @@ import asyncio
 import json
 
 from ..memory.draft import DraftState
-from . import ResearchAgent, ReviewerAgent, ReviserAgent
+from .researcher import ResearchAgent
+from .reviewer import ReviewerAgent
+from .reviser import ReviserAgent
+from .visualizer import VisualizerAgent
 
 
 class EditorAgent:
@@ -47,6 +50,8 @@ class EditorAgent:
                                   based on the research summary report above.
                                   You must generate a maximum of {max_sections} section headers.
                                   You must focus ONLY on related research topics for subheaders and do NOT include introduction, conclusion and references.
+                                  The subheaders must be unique and not repeated.
+                                  The sections MUST NOT CONTAIN OVERLAP. MAKE THE SECTIONS AS INDEPENDENT AS POSSIBLE.
                                   You must return nothing but a JSON with the fields 'title' (str) and 
                                   'sections' (maximum {max_sections} section headers) with the following structure:
                                   '{{title: string research title, date: today's date, 
@@ -73,17 +78,20 @@ class EditorAgent:
         research_agent = ResearchAgent(self.websocket, self.stream_output, self.headers)
         reviewer_agent = ReviewerAgent(self.websocket, self.stream_output, self.headers)
         reviser_agent = ReviserAgent(self.websocket, self.stream_output, self.headers)
+        #visualizer_agent = VisualizerAgent(self.websocket, self.stream_output, self.headers)
         queries = research_state.get("sections")
         title = research_state.get("title")
         human_feedback = research_state.get("human_feedback")
         workflow = StateGraph(DraftState)
 
         workflow.add_node("researcher", research_agent.run_depth_research)
+        #workflow.add_node("visualizer", visualizer_agent.run)
         workflow.add_node("reviewer", reviewer_agent.run)
         workflow.add_node("reviser", reviser_agent.run)
 
-        # set up edges researcher->reviewer->reviser->reviewer...
+        # set up edges researcher->visualizer->reviewer->reviser->reviewer...
         workflow.set_entry_point("researcher")
+        #workflow.add_edge("researcher", "visualizer")
         workflow.add_edge("researcher", "reviewer")
         workflow.add_edge("reviser", "reviewer")
         workflow.add_conditional_edges(
@@ -99,12 +107,12 @@ class EditorAgent:
             await self.stream_output(
                 "logs",
                 "parallel_research",
-                f"Running parallel research for the following queries: {queries}",
+                f"Running parallel research and visualization for the following queries: {queries}",
                 self.websocket,
             )
         else:
             print_agent_output(
-                f"Running the following research tasks in parallel: {queries}...",
+                f"Running the following research and visualization tasks in parallel: {queries}...",
                 agent="EDITOR",
             )
 
@@ -112,7 +120,7 @@ class EditorAgent:
             chain.ainvoke(
                 {
                     "task": research_state.get("task"),
-                    "topic": query,  # + (f". Also: {human_feedback}" if human_feedback is not None else ""),
+                    "topic": query,
                     "title": title,
                     "headers": self.headers,
                 }

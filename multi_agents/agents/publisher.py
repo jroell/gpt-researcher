@@ -25,6 +25,11 @@ class PublisherAgent:
                                  for key, value in subheader.items())
         references = '\n'.join(f"{reference}" for reference in research_state.get("sources"))
         headers = research_state.get("headers")
+        
+        # Extract visualization paths
+        visualizations = [item.get("visualizations") for item in research_state.get("research_data") if "visualizations" in item]
+        visualization_section = "\n\n## Visualizations\n" + "\n".join(f"![Visualization]({vis})" for vis in visualizations) if visualizations else ""
+
         layout = f"""# {headers.get('title')}
 #### {headers.get("date")}: {research_state.get('date')}
 
@@ -35,6 +40,8 @@ class PublisherAgent:
 {research_state.get('table_of_contents')}
 
 {sections}
+
+{visualization_section}
 
 ## {headers.get("conclusion")}
 {research_state.get('conclusion')}

@@ -5,7 +5,7 @@ const SourceCard = ({ source }: { source: { name: string; url: string } }) => {
     <div className="flex h-[79px] w-full items-center gap-2.5 rounded border border-solid border-[#C1C1C1] bg-neutral-50 px-1.5 py-1 md:w-auto">
       <div className="">
         <Image
-          src={`https://t2.gstatic.com/faviconV2?client=SOCIALhttps://www.google.com/s2/favicons?domain=type=FAVICONhttps://www.google.com/s2/favicons?domain=fallback_opts=TYPE,SIZE,URLhttps://www.google.com/s2/favicons?domain=url=${source.url}&sz=128`}
+          src={`https://www.google.com/s2/favicons?domain=${encodeURIComponent(source.url)}&sz=128`}
           alt={source.url}
           className="p-1"
           width={44}

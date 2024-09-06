@@ -9,6 +9,8 @@ from .human import HumanAgent
 # Below import should remain last since it imports all of the above
 from .master import ChiefEditorAgent
 
+from .visualizer import VisualizerAgent
+
 __all__ = [
     "ChiefEditorAgent",
     "ResearchAgent",
@@ -17,5 +19,5 @@ __all__ = [
     "PublisherAgent",
     "ReviserAgent",
     "ReviewerAgent",
-    "HumanAgent"
+    "HumanAgent",
 ]

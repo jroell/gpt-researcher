@@ -19,6 +19,10 @@ from . import \
 
 class ChiefEditorAgent:
     def __init__(self, task: dict, websocket=None, stream_output=None, tone=None, headers=None):
+        query = task.get('query')
+        current_date = datetime.date.today().strftime("%Y-%m-%d")
+        query = f"{query} (For your information, the current date is {current_date})"
+        task['query'] = query
         self.task_id = int(time.time()) # Currently time based, but can be any unique identifier
         self.output_dir = "./outputs/" + sanitize_filename(f"run_{self.task_id}_{task.get('query')[0:40]}")
         self.task = task

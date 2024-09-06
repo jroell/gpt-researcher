@@ -36,23 +36,27 @@ class WriterAgent:
         follow_guidelines = task.get("follow_guidelines")
         guidelines = task.get("guidelines")
 
+        # Extract visualization paths
+        visualizations = [item.get("visualizations") for item in data if "visualizations" in item]
+
         prompt = [
             {
                 "role": "system",
-                "content": "You are a research writer. Your sole purpose is to write a well-written "
-                "research reports about a "
-                "topic based on research findings and information.\n ",
+                "content": "You are a research writer. Your sole purpose is to write well-written "
+                "research reports about a topic based on research findings, information, and visualizations.\n ",
             },
             {
                 "role": "user",
                 "content": f"Today's date is {datetime.now().strftime('%d/%m/%Y')}\n."
                 f"Query or Topic: {query}\n"
                 f"Research data: {str(data)}\n"
-                f"Your task is to write an in depth, well written and detailed "
-                f"introduction and conclusion to the research report based on the provided research data. "
+                f"Visualizations: {str(visualizations)}\n"
+                f"Your task is to write an in-depth, well-written, and detailed "
+                f"introduction and conclusion to the research report based on the provided research data and visualizations. "
                 f"Do not include headers in the results.\n"
                 f"You MUST include any relevant sources to the introduction and conclusion as markdown hyperlinks -"
-                f"For example: 'This is a sample text. ([url website](url))'\n\n"
+                f"For example: 'This is a sample text. ([url website](url))'\n"
+                f"When referencing visualizations, use the format: '![Visualization](path_to_visualization)'\n\n"
                 f"{f'You must follow the guidelines provided: {guidelines}' if follow_guidelines else ''}\n"
                 f"You MUST return nothing but a JSON in the following format (without json markdown):\n"
                 f"{sample_json}\n\n",
