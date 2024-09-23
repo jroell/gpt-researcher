@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #282a36;
+  --current-line: #44475a;
+  --foreground: #f8f8f2;
+  --comment: #6272a4;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+}
+
 @keyframes gradientBG {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
@@ -13,11 +27,11 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  background-size: 200% 200%;
-  background-image: linear-gradient(45deg, #151A2D, #111827, #151A2D);
-  animation: gradientBG 10s ease infinite;
+  background-color: black; 
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .landing {
@@ -26,27 +40,25 @@ body {
   align-items: center;
   height: 30vh;
   text-align: center;
-  color: white;
 }
 
 .landing h1 {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  color: var(--purple);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   .loader {
     text-align: left;
@@ -59,8 +71,7 @@ body {
     vertical-align: middle;
     width: 7px;
     height: 7px;
-    /* background: #4b4b4b; */
-    background: white;
+    background: var(--cyan);
     border-radius: 50%;
     animation: loader 0.6s infinite alternate;
   }
