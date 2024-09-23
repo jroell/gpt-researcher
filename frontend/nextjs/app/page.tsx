@@ -62,10 +62,8 @@ export default function Home() {
 
     if (!socket) {
       if (typeof window !== 'undefined') {
-        const { protocol, pathname } = window.location;
-        let { host } = window.location;
-        host = host.includes('localhost') ? 'localhost:8000' : host;
-        const ws_uri = `${protocol === 'https:' ? 'wss:' : 'ws:'}//${host}${pathname}ws`;
+        const { protocol, host } = window.location;
+        const ws_uri = `${protocol === "https:" ? "wss:" : "ws:"}//${host}/ws`;
 
         const newSocket = new WebSocket(ws_uri);
         setSocket(newSocket);
