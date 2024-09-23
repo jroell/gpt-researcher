@@ -46,7 +46,7 @@ export default function RootLayout({
         <PlausibleProvider domain="localhost:3000" />
       </head>
       <body
-        className={`${inter.className} flex min-h-screen flex-col justify-between`}
+        className={`${inter.className} gradient flex min-h-screen flex-col justify-between`}
       >
         {children}
       </body>
