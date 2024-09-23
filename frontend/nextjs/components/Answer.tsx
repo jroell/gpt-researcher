@@ -25,7 +25,7 @@ export default function Answer({ answer }: { answer: string }) {
   }, [answer]);
   
   return (
-    <div className="container flex h-auto w-full shrink-0 gap-4 bg-gray-800 shadow-md rounded-lg border border-solid border-[#C2C2C2] p-5">
+    <div className="container flex h-auto w-full shrink-0 gap-4 rounded-lg border border-solid border-[#C2C2C2] bg-sky-950 p-5 shadow-md">
       <div className="w-full">
         <div className="flex items-center justify-between pb-3">
           {answer && (
@@ -45,7 +45,6 @@ export default function Answer({ answer }: { answer: string }) {
                   });
                 }}
               >
-
                 <Image
                   src="/img/copy-white.svg"
                   alt="footer"
@@ -68,11 +67,13 @@ export default function Answer({ answer }: { answer: string }) {
           <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-white">
             {answer ? (
               <div className="answer-container">
-                <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                <div
+                  className="markdown-content"
+                  dangerouslySetInnerHTML={{ __html: htmlContent }}
+                />
                 <style jsx>{`
-                .answer-container {
-                    font-family: Georgia, 'Times New Roman', Times, serif;
-                    
+                  .answer-container {
+                    font-family: Georgia, "Times New Roman", Times, serif;
                   }
 
                   .markdown-content {
@@ -80,8 +81,15 @@ export default function Answer({ answer }: { answer: string }) {
                     margin: 0;
                     padding: 0;
                     /* Override existing styles for headings */
-                    h1, h2, h3, h4, h5, h6 {
-                      font-size: 18px; font-weight: 400; padding: 0;
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                      font-size: 18px;
+                      font-weight: 400;
+                      padding: 0;
                       line-height: 1.2;
                     }
                     /* Optionally add more specific styling */

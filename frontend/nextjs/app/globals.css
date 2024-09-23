@@ -13,7 +13,7 @@
   --pink: #ff79c6;
   --purple: #bd93f9;
   --red: #ff5555;
-  --yellow: #f1fa8c;
+  --yellow: #ecff01;
 }
 
 @keyframes gradientBG {
@@ -100,3 +100,8 @@ body {
 body {
   margin: 0px !important;
 }
+
+.bg-yellow-400 {
+  background-color: #ecff01;
+}
+

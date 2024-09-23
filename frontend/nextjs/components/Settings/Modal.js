@@ -118,7 +118,7 @@ export default function Modal({ setChatBoxSettings, chatBoxSettings }) {
   return (
     <div className="settings">
       <button
-        className="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="mb-1 mr-1 rounded bg-yellow-400 px-6 py-3 text-sm font-bold uppercase text-black shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-purple-600"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -126,30 +126,49 @@ export default function Modal({ setChatBoxSettings, chatBoxSettings }) {
       </button>
       {showModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="relative p-6 flex-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+            <div className="relative mx-auto my-6 w-auto max-w-3xl">
+              <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
+                <div className="relative flex-auto p-6">
                   <div className="tabs">
-                    <button onClick={() => setActiveTab('search')} className={`tab-button ${activeTab === 'search' ? 'active' : ''}`}>Search Settings</button>
-                    <button onClick={() => setActiveTab('api')} className={`tab-button ${activeTab === 'api' ? 'active' : ''}`}>API Variables</button>
+                    <button
+                      onClick={() => setActiveTab("search")}
+                      className={`tab-button ${activeTab === "search" ? "active" : ""}`}
+                    >
+                      Search Settings
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("api")}
+                      className={`tab-button ${activeTab === "api" ? "active" : ""}`}
+                    >
+                      API Variables
+                    </button>
                   </div>
-                  {activeTab === 'search' && (
+                  {activeTab === "search" && (
                     <div className="App">
                       <header className="App-header">
-                        <ChatBox setChatBoxSettings={setChatBoxSettings} chatBoxSettings={chatBoxSettings} />
+                        <ChatBox
+                          setChatBoxSettings={setChatBoxSettings}
+                          chatBoxSettings={chatBoxSettings}
+                        />
                       </header>
                     </div>
                   )}
-                  {activeTab === 'api' && (
+                  {activeTab === "api" && (
                     <main className="container" id="form">
                       <form method="POST" className="report_settings">
                         <div className="form-group">
-                          <label className="form-group-label">Search Engine</label>
-                          <select name="RETRIEVER" value={apiVariables.RETRIEVER} onChange={handleInputChange}>
-                            <option value="" disabled>Select Retriever</option>
+                          <label className="form-group-label">
+                            Search Engine
+                          </label>
+                          <select
+                            name="RETRIEVER"
+                            value={apiVariables.RETRIEVER}
+                            onChange={handleInputChange}
+                          >
+                            <option value="" disabled>
+                              Select Retriever
+                            </option>
                             <option value="tavily">Tavily</option>
                             <option value="google">Google</option>
                             <option value="searx">Searx</option>
@@ -163,35 +182,75 @@ export default function Modal({ setChatBoxSettings, chatBoxSettings }) {
                         {renderConditionalInputs()}
 
                         <div className="form-group">
-                          <label className="form-group-label">OPENAI_API_KEY</label>
-                          <input type="text" name="OPENAI_API_KEY" value={apiVariables.OPENAI_API_KEY} onChange={handleInputChange} />
+                          <label className="form-group-label">
+                            OPENAI_API_KEY
+                          </label>
+                          <input
+                            type="text"
+                            name="OPENAI_API_KEY"
+                            value={apiVariables.OPENAI_API_KEY}
+                            onChange={handleInputChange}
+                          />
                         </div>
 
                         <div className="form-group">
                           <label className="form-group-label">DOC_PATH</label>
-                          <input type="text" name="DOC_PATH" value={apiVariables.DOC_PATH} onChange={handleInputChange} />
+                          <input
+                            type="text"
+                            name="DOC_PATH"
+                            value={apiVariables.DOC_PATH}
+                            onChange={handleInputChange}
+                          />
                         </div>
 
                         <div className="form-group">
-                          <label className="form-group-label">TAVILY_API_KEY</label>
-                          <input type="text" name="TAVILY_API_KEY" value={apiVariables.TAVILY_API_KEY} onChange={handleInputChange} />
+                          <label className="form-group-label">
+                            TAVILY_API_KEY
+                          </label>
+                          <input
+                            type="text"
+                            name="TAVILY_API_KEY"
+                            value={apiVariables.TAVILY_API_KEY}
+                            onChange={handleInputChange}
+                          />
                         </div>
 
                         <div className="form-group">
-                          <label className="form-group-label">LANGCHAIN_API_KEY</label>
-                          <input type="text" name="LANGCHAIN_API_KEY" value={apiVariables.LANGCHAIN_API_KEY} onChange={handleInputChange} />
+                          <label className="form-group-label">
+                            LANGCHAIN_API_KEY
+                          </label>
+                          <input
+                            type="text"
+                            name="LANGCHAIN_API_KEY"
+                            value={apiVariables.LANGCHAIN_API_KEY}
+                            onChange={handleInputChange}
+                          />
                         </div>
 
                         {apiVariables.LANGCHAIN_API_KEY && (
                           <>
                             <div className="form-group">
-                              <label className="form-group-label">LANGGRAPH_HOST_URL</label>
-                              <input type="text" name="LANGGRAPH_HOST_URL" value={apiVariables.LANGGRAPH_HOST_URL} onChange={handleInputChange} />
+                              <label className="form-group-label">
+                                LANGGRAPH_HOST_URL
+                              </label>
+                              <input
+                                type="text"
+                                name="LANGGRAPH_HOST_URL"
+                                value={apiVariables.LANGGRAPH_HOST_URL}
+                                onChange={handleInputChange}
+                              />
                             </div>
 
                             <div className="form-group">
-                              <label className="form-group-label">ANTHROPIC_API_KEY</label>
-                              <input type="text" name="ANTHROPIC_API_KEY" value={apiVariables.ANTHROPIC_API_KEY} onChange={handleInputChange} />
+                              <label className="form-group-label">
+                                ANTHROPIC_API_KEY
+                              </label>
+                              <input
+                                type="text"
+                                name="ANTHROPIC_API_KEY"
+                                value={apiVariables.ANTHROPIC_API_KEY}
+                                onChange={handleInputChange}
+                              />
                             </div>
                           </>
                         )}
@@ -201,7 +260,7 @@ export default function Modal({ setChatBoxSettings, chatBoxSettings }) {
                 </div>
                 <div className="flex items-center justify-end p-3">
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="mb-1 mr-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
                     type="button"
                     onClick={handleSaveChanges}
                   >
@@ -211,7 +270,7 @@ export default function Modal({ setChatBoxSettings, chatBoxSettings }) {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
       ) : null}
     </div>
