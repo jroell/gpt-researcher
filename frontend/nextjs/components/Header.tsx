@@ -10,8 +10,8 @@ const Header = () => {
             <Image
               src="/img/vurvey.png"
               alt="logo"
-              width={60}
-              height={60}
+              width={440}
+              height={20}
               className="lg:h-20 lg:w-20"
             />
           </a>

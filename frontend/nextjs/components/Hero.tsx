@@ -40,7 +40,7 @@ const Hero: FC<THeroProps> = ({
         </div>
 
         {/* input section */}
-        <div className="mt-20 w-full max-w-[708px] pb-6">
+        <div className="mt-20 w-full max-w-[1135px] pb-6">
           <InputArea
             promptValue={promptValue}
             setPromptValue={setPromptValue}
@@ -83,17 +83,17 @@ type suggestionType = {
 const suggestions: suggestionType[] = [
   {
     id: 1,
-    name: "Stock analysis on ",
+    name: "Market research on Consumer Electronics",
     icon: "/img/stock2.svg",
   },
   {
     id: 2,
-    name: "Help me plan an adventure to ",
+    name: "Help me find the best places to travel to in 2024",
     icon: "/img/hiker.svg",
   },
   {
     id: 3,
-    name: "What are the latest news on ",
+    name: "What is the latest research on AI in healthcare?",
     icon: "/img/news.svg",
   },
 ];
