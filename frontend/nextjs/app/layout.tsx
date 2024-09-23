@@ -8,7 +8,7 @@ const inter = Lexend({ subsets: ["latin"] });
 let title = "Vurvey Researcher";
 let description = "A research assistant vanquishing hallucinations";
 let url = "https://vurvey.com";
-let ogimage = "/favicon.ico";
+let ogimage = "/vurvey_logo_black.png";
 let sitename = "Vurvey Researcher";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title,
   description,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/vurvey_logo_black.png",
   },
   openGraph: {
     images: [ogimage],

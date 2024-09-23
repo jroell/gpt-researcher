@@ -29,13 +29,12 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
+  background-color: indigo;
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0;
-  padding: 0;
 }
 
-.gradient {
+/*.gradient {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
@@ -53,7 +52,7 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+}*/
 
 .landing {
   display: flex;
