@@ -159,7 +159,7 @@ class GPTResearcher:
             await stream_output(
                 "logs",
                 "research_step_finalized",
-                f"Finalized research step.\n💸 Total Research Costs: ${self.get_costs()}",
+                f"Finalized research step.",
                 self.websocket,
             )
 
@@ -605,7 +605,7 @@ class GPTResearcher:
         )
 
         return draft_section_titles
-    
+
     async def __get_similar_written_contents_by_query(self,
             query: str,
             written_contents: List[Dict],
@@ -652,7 +652,7 @@ class GPTResearcher:
             report_type=self.report_type,
             cost_callback=self.add_costs,
         )
-    
+
     async def get_similar_written_contents_by_draft_section_titles(
         self, 
         current_subtopic: str, 
@@ -673,13 +673,13 @@ class GPTResearcher:
         List[str]: List of relevant written contents.
         """
         all_queries = [current_subtopic] + draft_section_titles
-        
+
         async def process_query(query: str) -> Set[str]:
             return set(await self.__get_similar_written_contents_by_query(query, written_contents))
 
         # Run all queries in parallel
         results = await asyncio.gather(*[process_query(query) for query in all_queries])
-        
+
         # Combine all results
         relevant_contents = set().union(*results)
 
